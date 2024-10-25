@@ -1,0 +1,24 @@
+@startuml cds
+skinparam actorStyle awesome
+title Loja de CDs
+
+actor Atendente
+Gerente <|-- Atendente
+
+Atendente -- (Vender CDs)
+
+(Vender CDs) <|-- (Vender CDs à vista)
+(Vender CDs) <|-- (Vender CDs a prazo)
+
+(Vender CDs a prazo) <|-- (Vender com cartão)
+(Vender CDs a prazo) <|-- (Vender com boleto)
+
+(Vender CDs à vista) <-.- (Calcular Desconto) : <<extend>>
+(Vender com cartão) <-.- (Calcular Desconto) : <<extend>>
+
+Gerente -- (Administrar Estoque)
+
+(Fazer login) .> (Administrar Estoque) : <<include>>
+(Fazer login) .> (Vender CDs) : <<include>>
+
+@enduml

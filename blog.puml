@@ -1,0 +1,18 @@
+@startuml blog
+skinparam actorStyle awesome
+title Blog
+:Dono do Blog: as adm
+:Usuario: as user
+
+user <|-- adm
+
+user -- (Ler Conteudo)
+
+(Comentar) -.-> (Ler Conteudo) : <<extend>>
+(Excluir Comentario) -.-> (Comentar) : <<extend>>
+
+user -- (Criar Blog)
+
+adm -- (Criar Postagem)
+adm -- (Remover Postagem)
+@enduml
