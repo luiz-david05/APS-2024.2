@@ -1,0 +1,29 @@
+@startuml pizzaria
+skinparam actorStyle awesome
+title Pizzaria
+
+actor Atendente
+actor Entregador
+actor Cliente
+Gerente <|-- Atendente
+
+Atendente -- (Realizar Pedido)
+Cliente -- (Realizar Pedido)
+Entregador -- (Realizar Entrega)
+
+(Realizar Pedido) <|-- (Pedido para Retirada)
+(Realizar Pedido) <|-- (Pedido para Entrega)
+
+(Pedido para Entrega) ..> (Realizar Entrega) : <<include>>
+
+(Pedido para Retirada) <-.- (Calcular Desconto) : <<extend>>
+(Pedido para Entrega) <-.- (Calcular Frete) : <<extend>>
+
+Gerente -- (Administrar Estoque)
+Gerente -- (Cadastrar Produtos)
+
+(Fazer login) <. (Administrar Estoque) : <<include>>
+(Fazer login) <. (Cadastrar Produtos) : <<include>>
+(Fazer login) <. (Realizar Pedido) : <<include>>
+
+@enduml

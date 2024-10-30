@@ -18,7 +18,7 @@ Atendente -- (Vender CDs)
 
 Gerente -- (Administrar Estoque)
 
-(Fazer login) .> (Administrar Estoque) : <<include>>
-(Fazer login) .> (Vender CDs) : <<include>>
+(Fazer login) <. (Administrar Estoque) : <<include>>
+(Fazer login) <. (Vender CDs) : <<include>>
 
 @enduml
