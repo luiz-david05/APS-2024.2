@@ -19,11 +19,17 @@ Entregador -- (Realizar Entrega)
 (Pedido para Retirada) <-.- (Calcular Desconto) : <<extend>>
 (Pedido para Entrega) <-.- (Calcular Frete) : <<extend>>
 
+(Realizar Pagamento) <|-- (Pagar com Cartão)
+(Realizar Pagamento) <|-- (Pagar com Dinheiro)
+(Realizar Pagamento) <|-- (Pagar com Outros)
+
 Gerente -- (Administrar Estoque)
 Gerente -- (Cadastrar Produtos)
 
 (Fazer login) <. (Administrar Estoque) : <<include>>
 (Fazer login) <. (Cadastrar Produtos) : <<include>>
 (Fazer login) <. (Realizar Pedido) : <<include>>
+(Realizar Pedido) <. (Receber Pagamento) : <<include>>
+(Realizar Pedido) <. (Realizar Pagamento) : <<include>>
 
 @enduml

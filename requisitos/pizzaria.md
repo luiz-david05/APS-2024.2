@@ -22,3 +22,7 @@
 
     - Permitir o cadastro de novos produtos, como tipos de pizza, bebidas e adicionais.
     - Gerente deve poder editar detalhes do produto, como preço, descrição e disponibilidade
+
+6. Pagamentos
+    - Funcionalidade para receber pagamento de pedidos (Atendente).
+    - Opção para o cliente realizar o pagamento, podendo escolher entre métodos como cartão, dinheiro ou outros.
