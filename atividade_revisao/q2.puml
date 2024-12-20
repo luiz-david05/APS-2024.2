@@ -1,0 +1,16 @@
+@startuml Reservar Livro
+title Reservar Livro
+actor Usuario
+entity Sistema
+entity BancoDeDados
+entity SistemaNotificacao
+
+
+Usuario -> Sistema: Solicitar Reserva
+Sistema -> Sistema: Verificar Disponibilidade
+Sistema -> Usuario: Confirmar Disponibilidade
+Usuario -> Sistema: Confirmar Reserva
+Sistema -> BancoDeDados: Registrar Reserva
+Sistema -> SistemaNotificacao: Enviar Notificação de Confirmação
+SistemaNotificacao -> Usuario: Notificação de Reserva
+@enduml

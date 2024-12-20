@@ -1,0 +1,20 @@
+@startuml Reservar livro
+title Reservar Livro
+actor "Usuário" as Usuario
+
+usecase "Logar no sistema" as Logar
+usecase "Pesquisar livro" as Pesquisar
+usecase "Selecionar livro" as Selecionar
+usecase "Reservar livro" as Reservar
+usecase "Confirmar reserva" as Confirmar
+usecase "Verificar disponibilidade" as Verificar
+usecase "Enviar notificação" as Notificar
+
+Usuario -- Logar
+Logar --> Pesquisar
+Pesquisar --> Selecionar
+Selecionar --> Reservar
+Reservar --> Verificar : <<include>>
+Reservar --> Confirmar : <<include>>
+Reservar ..> Notificar : <<extend>>
+@enduml
