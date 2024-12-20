@@ -1,0 +1,25 @@
+@startuml Sistema de Estoque
+title Sistema de Estoque
+class Produto {
+    nome: String
+    codigo: String
+    preco: Double
+    cadastrarProduto()
+    alterarProduto()
+    excluirProduto()
+}
+
+class Fornecedor {
+    nome: String
+    cnpj: String
+    endereco: String
+}
+
+class Lote {
+    quantidade: Integer
+    dataRecebimento: Date
+}
+
+Produto "1" -- "0..*" Lote
+Fornecedor "1" -- "0..*" Produto
+@enduml
