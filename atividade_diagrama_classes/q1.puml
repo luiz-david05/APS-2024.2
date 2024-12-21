@@ -45,9 +45,9 @@ class Pagamento {
     excluirPagamento()
 }
 
-Hospede "1:1" -- "1:n" Reserva: faz >>
-Quarto "1:1" -- "1:n" Reserva: possui >>
-Categoria "1:1" -- "1:n" Quarto: possui >>
-Reserva "1:1" -- "1:1" Pagamento: possui >>
+Hospede "1:1" -- "1:n" Reserva: faz
+Quarto "1:1" -- "1:n" Reserva: possui
+Categoria "1:1" -- "1:n" Quarto: possui
+Reserva "1:1" -- "1:1" Pagamento: possui
 
 @enduml

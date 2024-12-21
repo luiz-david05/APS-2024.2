@@ -31,9 +31,9 @@ class ProdutoFornecedor {
     fornecedor: Fornecedor
 }
 
-Produto "1:1" -- "1:n" Estoque: possui >>
-Produto "1:1" -- "1:n" ProdutoFornecedor: possui >>
-ProdutoFornecedor "1:1" -- "1:n" Fornecedor: fornece >>
-Lote "1:1" -- "1:n" Estoque: possui >>
+Produto "1:1" -- "1:n" Estoque: possui
+Produto "1:1" -- "1:n" ProdutoFornecedor: possui
+ProdutoFornecedor "1:1" -- "1:n" Fornecedor: fornece
+Lote "1:1" -- "1:n" Estoque: possui
 
 @enduml
