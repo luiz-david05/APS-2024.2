@@ -20,6 +20,20 @@ class Lote {
     dataRecebimento: Date
 }
 
-Produto "1" -- "0..*" Lote
-Fornecedor "1" -- "0..*" Produto
+class Estoque {
+    quantidade: Integer
+    produto: Produto
+    lote: Lote
+}
+
+class ProdutoFornecedor {
+    produto: Produto
+    fornecedor: Fornecedor
+}
+
+Produto "1:1" -- "1:n" Estoque: possui >>
+Produto "1:1" -- "1:n" ProdutoFornecedor: possui >>
+ProdutoFornecedor "1:1" -- "1:n" Fornecedor: fornece >>
+Lote "1:1" -- "1:n" Estoque: possui >>
+
 @enduml

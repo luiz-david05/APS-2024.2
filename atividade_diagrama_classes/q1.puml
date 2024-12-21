@@ -1,5 +1,4 @@
-@startuml Sistema de Reserva
-title Sistema de Reserva
+@startuml Sistema De Reservas Hotel
 class Hospede {
     nome: String
     cpf: String
@@ -12,15 +11,26 @@ class Hospede {
 
 class Quarto {
     numero: Int
-    categoria: String
+    andar: Int
+    categoria: Categoria
     cadastrarQuarto()
     alterarQuarto()
     excluirQuarto()
 }
 
+class Categoria {
+    nome: String
+    descricao: String
+    cadastrarCategoria()
+    alterarCategoria()
+    excluirCategoria()
+}
+
 class Reserva {
     dataInicio: Date
     dataFim: Date
+    hospede: Hospede
+    quarto: Quarto
     cadastrarReserva()
     alterarReserva()
     excluirReserva()
@@ -29,15 +39,15 @@ class Reserva {
 class Pagamento {
     valor: Double
     dataPagamento: Date
+    reserva: Reserva
     cadastrarPagamento()
     alterarPagamento()
     excluirPagamento()
 }
 
-Hospede "1" -- "0..*" Reserva
-
-Quarto "1" -- "0..*" Reserva
-
-Reserva "1" -- "1" Pagamento
+Hospede "1:1" -- "1:n" Reserva: faz >>
+Quarto "1:1" -- "1:n" Reserva: possui >>
+Categoria "1:1" -- "1:n" Quarto: possui >>
+Reserva "1:1" -- "1:1" Pagamento: possui >>
 
 @enduml
