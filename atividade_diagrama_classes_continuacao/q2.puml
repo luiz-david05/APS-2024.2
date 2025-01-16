@@ -1,0 +1,55 @@
+@startuml Sistema de Venda de Produtos
+title Sistema de Venda de Produtos
+
+class Produto {
+    - idProduto: Int
+    - nome: String
+    - descricao: String
+    - preco: Double
+    + cadastrarProduto()
+    + alterarProduto()
+    + excluirProduto()
+}
+
+class Cliente {
+    - idCliente: Int
+    - nome: String
+    - cpf: String
+    - telefone: String
+    - email: String
+    + cadastrarCliente()
+    + alterarCliente()
+    + excluirCliente()
+}
+
+class Venda {
+    - idVenda: Int
+    - data: Date
+    + cadastrarVenda()
+    + alterarVenda()
+    + excluirVenda()
+}
+
+class ItemVenda {
+    - idItem: Int
+    - quantidade: Int
+    + cadastrarItemVenda()
+    + alterarItemVenda()
+    + excluirItemVenda()
+}
+
+class Pagamento {
+    - idPagamento: Int
+    - valor: Double
+    - dataPagamento: Date
+    + cadastrarPagamento()
+    + alterarPagamento()
+    + excluirPagamento()
+}
+
+Cliente "1" -- "0..*" Venda: faz
+Venda "1" *-- "1..*" ItemVenda: contém
+ItemVenda "1" o-- "1" Produto: refere-se
+Venda "1" *-- "0..*" Pagamento: possui
+
+@enduml

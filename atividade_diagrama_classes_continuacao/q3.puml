@@ -1,0 +1,64 @@
+@startuml Sistema de Gestao de Estacionamento
+title Sistema de Gestão de Estacionamento
+
+class Estacionamento {
+    - idEstacionamento: Int
+    - nome: String
+    - capacidadeMaxima: Int
+    + cadastrarEstacionamento()
+    + alterarEstacionamento()
+    + excluirEstacionamento()
+}
+
+class Vaga {
+    - idVaga: Int
+    - numero: Int
+    - tipo: TipoVaga
+    + cadastrarVaga()
+    + alterarVaga()
+    + excluirVaga()
+}
+
+class TipoVaga {
+    - idTipoVaga: Int
+    - descricao: String
+    + cadastrarTipoVaga()
+    + alterarTipoVaga()
+    + excluirTipoVaga()
+}
+
+class Cliente {
+    - idCliente: Int
+    - nome: String
+    - cpf: String
+    + cadastrarCliente()
+    + alterarCliente()
+    + excluirCliente()
+}
+
+class Veiculo {
+    - idVeiculo: Int
+    - placa: String
+    - modelo: String
+    - marca: String
+    + cadastrarVeiculo()
+    + alterarVeiculo()
+    + excluirVeiculo()
+}
+
+class Registro {
+    - idRegistro: Int
+    - dataEntrada: Date
+    - dataSaida: Date
+    + cadastrarRegistro()
+    + alterarRegistro()
+    + excluirRegistro()
+}
+
+Estacionamento "1" *-- "1..*" Vaga: possui
+Vaga "1" o-- "1" TipoVaga: tem
+Cliente "1" -- "0..*" Veiculo: possui
+Veiculo "1" -- "0..*" Registro: está associado
+Registro "1" -- "1" Vaga: ocupa
+
+@enduml

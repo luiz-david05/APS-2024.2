@@ -1,0 +1,83 @@
+@startuml Sistema de gestao de pedidos de Restaurante
+title Sistema de Gestão de Pedidos de Restaurante
+
+class Restaurante {
+    - idRestaurante: Int
+    - nome: String
+    + cadastrarRestaurante()
+    + alterarRestaurante()
+    + excluirRestaurante()
+}
+
+class Cardapio {
+    - idCardapio: Int
+    - nome: String
+    - descricao: String
+    + cadastrarCardapio()
+    + alterarCardapio()
+    + excluirCardapio()
+}
+
+class ItemCardapio {
+    - idItemCardapio: Int
+    - nome: String
+    - descricao: String
+    - preco: Double
+    + cadastrarItemCardapio()
+    + alterarItemCardapio()
+    + excluirItemCardapio()
+}
+
+class Cliente {
+    - idCliente: Int
+    - nome: String
+    - cpf: String
+    + cadastrarCliente()
+    + alterarCliente()
+    + excluirCliente()
+}
+
+class Pedido {
+    - idPedido: Int
+    - data: Date
+    - hora: Time
+    + cadastrarPedido()
+    + alterarPedido()
+    + excluirPedido()
+}
+
+class ItemPedido {
+    - idItemPedido: Int
+    - quantidade: Int
+    - itemCardapio: ItemCardapio
+    + cadastrarItemPedido()
+    + alterarItemPedido()
+    + excluirItemPedido()
+}
+
+class Pagamento {
+    - idPagamento: Int
+    - valor: Double
+    - dataPagamento: Date
+    + cadastrarPagamento()
+    + alterarPagamento()
+    + excluirPagamento()
+}
+
+class FormaPagamento {
+    - idFormaPagamento: Int
+    - descricao: String
+    + cadastrarFormaPagamento()
+    + alterarFormaPagamento()
+    + excluirFormaPagamento()
+}
+
+Restaurante "1" -- "0..*" Cardapio: possui
+Cardapio "1" *-- "1..*" ItemCardapio: possui
+Cliente "1" -- "0..*" Pedido: faz
+Pedido "1" *-- "1..*" ItemPedido: contém
+ItemPedido "1" o-- "1" ItemCardapio: refere-se
+Pedido "1" *-- "0..*" Pagamento: possui
+Pagamento "1" -- "1" FormaPagamento: utiliza
+
+@enduml
