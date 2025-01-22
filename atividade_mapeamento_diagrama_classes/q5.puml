@@ -1,0 +1,58 @@
+@startuml Sistema de Cadastro de Cursos
+title Sistema de Cadastro de Cursos
+
+class Universidade {
+    - nome: String
+    - localizacao: String
+    + cadastrarUniversidade()
+}
+
+class Curso {
+    - nome: String
+    - codigo: String
+    - professorResponsavel: Professor
+    + cadastrarCurso()
+    + alterarCurso()
+    + excluirCurso()
+}
+
+class Aluno {
+    - nome: String
+    - matricula: String
+    - dataNascimento: Date
+    + matricularAluno()
+    + alterarAluno()
+    + excluirAluno()
+}
+
+class Professor {
+    - nome: String
+    - matricula: String
+    + cadastrarProfessor()
+    + alterarProfessor()
+    + excluirProfessor()
+}
+
+class Disciplina {
+    - nome: String
+    - cargaHoraria: Int
+    + cadastrarDisciplina()
+    + alterarDisciplina()
+    + excluirDisciplina()
+}
+
+class Matricula {
+    - dataMatricula: Date
+    + registrarMatricula()
+    + alterarMatricula()
+    + excluirMatricula()
+}
+
+Universidade "1" -- "1..*" Curso: possui
+Curso "1" -- "1..*" Aluno: possui
+Curso "1" o-- "1" Professor: é responsável
+Curso "1" -- "1..*" Disciplina: oferece
+Aluno "1" -- "1..*" Matricula: está associado
+Disciplina "1" -- "1..*" Matricula: está associado
+
+@enduml
